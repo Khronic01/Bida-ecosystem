@@ -263,37 +263,19 @@ export default function Hero() {
                 </span>
               </div>
               <div className="absolute inset-0 flex justify-center">
-                <motion.div className="flex justify-center flex-wrap gap-2 md:gap-4">
+                <div className="flex justify-center flex-wrap gap-2 md:gap-4">
                   {(typedText.length ? typedText : "").split('').map((char, index) => (
-                    <motion.span
+                    <span
                       key={index}
                       className="inline-block text-transparent bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-400 bg-clip-text relative"
-                      variants={letterVariants}
-                      initial="hidden"
-                      animate="visible"
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ 
-                        scale: 1.2,
-                        rotateY: 15,
-                        rotateX: 15,
-                        transition: { duration: 0.3 }
-                      }}
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       {char === ' ' ? '\u00A0' : char}
-                      <motion.span
-                        className="absolute inset-0 text-transparent bg-gradient-to-r from-fuchsia-500/20 via-purple-500/20 to-fuchsia-400/20 bg-clip-text blur-sm"
-                        initial={{ opacity: 0, z: -10 }}
-                        whileHover={{ opacity: 1, z: -20 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {char === ' ' ? '\u00A0' : char}
-                      </motion.span>
-                    </motion.span>
+                    </span>
                   ))}
-                  {/* blinking caret with fixed height to avoid line jump */}
-                  <span className="inline-block w-0.5 h-[1.6rem] sm:h-[2.2rem] md:h-[3rem] bg-white ml-1 align-middle animate-pulse" aria-hidden="true" />
-                </motion.div>
+                  {/* static caret with fixed height to avoid line jump */}
+                  <span className="inline-block w-0.5 h-[1.6rem] sm:h-[2.2rem] md:h-[3rem] bg-white ml-1 align-middle" aria-hidden="true" />
+                </div>
               </div>
             </div>
           </motion.h1>
