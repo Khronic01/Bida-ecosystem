@@ -66,6 +66,59 @@ export default function Hero() {
 
   const title = "BIDA";
 
+  // Typewriter state (looping)
+  const [typedText, setTypedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingIndex, setTypingIndex] = useState(0);
+
+  useEffect(() => {
+    const typeSpeedMs = isDeleting ? 80 : 120;
+    const endPauseMs = 1200;
+    const startPauseMs = 400;
+
+    let timer;
+
+    if (!isDeleting && typingIndex === 0 && typedText.length === 0) {
+      // initial small delay before typing starts
+      timer = setTimeout(() => {
+        setTypedText(title[0] ?? "");
+        setTypingIndex(1);
+      }, startPauseMs);
+      return () => clearTimeout(timer);
+    }
+
+    if (!isDeleting) {
+      if (typingIndex <= title.length) {
+        timer = setTimeout(() => {
+          setTypedText(title.slice(0, typingIndex));
+          setTypingIndex(typingIndex + 1);
+        }, typeSpeedMs);
+      } else {
+        // finished typing, pause then start deleting
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+          setTypingIndex(title.length - 1);
+        }, endPauseMs);
+      }
+    } else {
+      if (typingIndex >= 0) {
+        timer = setTimeout(() => {
+          setTypedText(title.slice(0, typingIndex));
+          setTypingIndex(typingIndex - 1);
+        }, typeSpeedMs);
+      } else {
+        // finished deleting, restart
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setTypingIndex(1);
+          setTypedText(title.slice(0, 1));
+        }, startPauseMs);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [title, typedText, typingIndex, isDeleting]);
+
   const handleGetToken = () => {
     alert("Token purchase functionality coming soon!");
   };
@@ -203,7 +256,7 @@ export default function Hero() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <motion.div className="flex justify-center flex-wrap gap-2 md:gap-4">
-              {title.split('').map((char, index) => (
+              {(typedText.length ? typedText : "").split('').map((char, index) => (
                 <motion.span
                   key={index}
                   className="inline-block text-transparent bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-400 bg-clip-text relative"
@@ -231,6 +284,8 @@ export default function Hero() {
                   </motion.span>
                 </motion.span>
               ))}
+              {/* blinking caret */}
+              <span className="inline-block w-0.5 h-8 md:h-12 bg-white ml-1 align-middle animate-pulse" aria-hidden="true" />
             </motion.div>
           </motion.h1>
           
