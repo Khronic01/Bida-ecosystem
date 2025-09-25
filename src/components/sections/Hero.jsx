@@ -77,7 +77,7 @@ export default function Hero() {
     <section 
       ref={containerRef}
       id="hero" 
-      className="py-20 px-4 sm:px-6 text-center relative overflow-hidden min-h-screen flex items-center"
+      className="pt-10 pb-20 md:py-20 px-4 sm:px-6 text-center relative overflow-hidden min-h-screen flex items-start md:items-center"
       style={{ perspective: "1000px" }}
     >
       {/* Advanced Background Elements */}
