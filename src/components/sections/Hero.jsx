@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap, Shield, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Shield, Play, Pause, Volume2, VolumeX, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
@@ -400,6 +400,23 @@ export default function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </motion.div>
             </Button>
+          </motion.div>
+
+          {/* Follow on X Button */}
+          <motion.div 
+            whileHover={{ scale: 1.05, y: -5 }} 
+            whileTap={{ scale: 0.95 }}
+            className="relative group w-full sm:w-auto"
+          >
+            <a href="https://x.com/bidauctiontoken" target="_blank" rel="noopener noreferrer">
+              <Button 
+                variant="outline"
+                className="relative bg-black/70 backdrop-blur-sm border-2 border-white/20 text-white hover:bg-white/10 px-8 py-4 w-full text-base sm:text-lg font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <X className="w-5 h-5" />
+                FOLLOW ON X
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
 

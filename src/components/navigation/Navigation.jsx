@@ -108,6 +108,19 @@ export default function Navigation({ currentPageName }) {
               ))}
             </div>
 
+            {/* Social - X/Twitter */}
+            <div className="hidden md:flex items-center ml-4">
+              <a
+                href="https://x.com/bidauctiontoken"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow on X"
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </a>
+            </div>
+
             {/* Mobile Menu Button */}
             <motion.div
               initial={{ opacity: 0 }}
