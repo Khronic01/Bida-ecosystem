@@ -6,7 +6,7 @@ const features = [
   {
     icon: DollarSign,
     title: "Medium of Exchange",
-    description: "Pay transaction fees, participate in auctions, and purchase lottery tickets across all BIDA rails."
+    description: "Pay transaction fees, participate in auctions, and purchase raffle tickets across all BIDA rails."
   },
   {
     icon: Users,

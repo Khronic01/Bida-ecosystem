@@ -14,8 +14,8 @@ const milestones = [
   },
   {
     quarter: "Q2 2025", 
-    title: "Prototype of Lottery & Auction Rails",
-    description: "Development and internal testing of the core decentralized lottery and auction functionalities on testnet.",
+    title: "Prototype of Raffle & Auction Rails",
+    description: "Development and internal testing of the core decentralized raffle and auction functionalities on testnet.",
     icon: Rocket,
     color: "purple",
     status: "current"
